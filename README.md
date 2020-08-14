@@ -41,11 +41,11 @@ Things you may want to cover:
 | birthday         | date   | null: false |
 
 ### Association
-- has_many :transactions
+- has_many :item_purchases
 - has_many :items
 
 
-## transactions テーブル
+## item_purchases テーブル
 | Column   | Type       | Options                        |
 | -------- | ------     | -----------                    |
 | user     | references | null: false, foreign_key: true |
@@ -53,7 +53,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
 - has_one :sending_destination
 
 
@@ -67,10 +67,10 @@ Things you may want to cover:
 | house_number    | string     | null: false  |
 | building_name   | string     |              |
 | phone_number    | string     | unique: true |
-| item            | references | null: false, foreign_key: true |
+| item_purchase   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :transactions
+- belongs_to :item_purchase
 - Gem :jp_prefecture
 
 
@@ -89,7 +89,7 @@ Things you may want to cover:
 | user            | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :transaction
+- has_one :item_purchase
 - has_one :item_img
 - belongs_to :user
 - Gem :jp_prefecture
