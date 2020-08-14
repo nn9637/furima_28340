@@ -41,18 +41,20 @@ Things you may want to cover:
 | birthday         | date   | null: false |
 
 ### Association
-
-- has_one :sending_destinations
-- has_many :items
 - has_many :transactions
+- has_many :items
 
 
 ## transactions テーブル
+| Column   | Type       | Options                        |
+| -------- | ------     | -----------                    |
+| user     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 ### Association
-has_one :sending_destination
-belongs_to :items
-belongs_to :user
+- belongs_to :user
+- belongs_to :items
+- has_one :sending_destination
 
 
 ## sending_destinations テーブル
@@ -65,11 +67,10 @@ belongs_to :user
 | house_number    | string     | null: false  |
 | building_name   | string     |              |
 | phone_number    | string     | unique: true |
-
+| item            | references | null: false, foreign_key: true |
 
 ### Association
-
-- has_one :transaction
+- belongs_to :transactions
 - Gem :jp_prefecture
 
 
@@ -82,16 +83,15 @@ belongs_to :user
 | price           | integer | null: false |
 | prefecture_code | integer | null: false |
 | condition       | integer | null: false |
-| postage_payer   | integer  | null: false |
-| preparation_day | integer  | null: false |
-| category        | integer  | null: false |
-
+| postage_payer   | integer | null: false |
+| preparation_day | integer | null: false |
+| category        | integer | null: false |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
-
+- has_one :transaction
 - has_one :item_img
 - belongs_to :user
-- belongs_to :transaction
 - Gem :jp_prefecture
 
 
@@ -100,7 +100,7 @@ belongs_to :user
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | url      | string | null: false |
+| item     | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :item
