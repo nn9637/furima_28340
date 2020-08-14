@@ -43,6 +43,20 @@ Things you may want to cover:
 ### Association
 
 - has_one :sending_destinations
+- has_many :items
+- has_many :transactions
+
+
+## transactions テーブル
+
+| Column      | Type   | Options     |
+| --------    | ------ | ----------- |
+| transaction |        |             |
+
+### Association
+has_one :sending_destinations
+has_one :items
+belongs_to :user
 
 
 ## sending_destinations テーブル
@@ -53,13 +67,13 @@ Things you may want to cover:
 | prefecture_code | integer    | null: false  |
 | city            | string     | null: false  |
 | house_number    | string     | null: false  |
-| building_name   | string     | null: false  |
-| phone_number    | integer    | unique: true |
+| building_name   | string     |              |
+| phone_number    | string     | unique: true |
 
 
 ### Association
 
-- belongs_to :user
+- belongs_to :transaction
 - Gem :jp_prefecture
 
 
@@ -80,6 +94,8 @@ Things you may want to cover:
 ### Association
 
 - has_one :item_img
+- belongs_to :user
+- belongs_to :transaction
 - Gem :jp_prefecture
 
 
