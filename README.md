@@ -49,13 +49,9 @@ Things you may want to cover:
 
 ## transactions テーブル
 
-| Column      | Type   | Options     |
-| --------    | ------ | ----------- |
-| transaction |        |             |
-
 ### Association
-has_one :sending_destinations
-has_one :items
+has_one :sending_destination
+belongs_to :items
 belongs_to :user
 
 
@@ -73,7 +69,7 @@ belongs_to :user
 
 ### Association
 
-- belongs_to :transaction
+- has_one :transaction
 - Gem :jp_prefecture
 
 
@@ -85,10 +81,10 @@ belongs_to :user
 | introduction    | text    | null: false |
 | price           | integer | null: false |
 | prefecture_code | integer | null: false |
-| item_condition  | string  | null: false |
-| postage_payer   | string  | null: false |
-| preparation_day | string  | null: false |
-| category        | string  | null: false |
+| condition       | integer | null: false |
+| postage_payer   | integer  | null: false |
+| preparation_day | integer  | null: false |
+| category        | integer  | null: false |
 
 
 ### Association
