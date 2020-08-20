@@ -8,10 +8,10 @@ class User < ApplicationRecord
   validates :email,             presence: true, uniqueness: true, inclusion: { in: ["@"] }
   validates :password,          presence: true, confirmation: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  validates :first_name,        presence: true,
-  validates :family_name,       presence: true,
-  validates :first_name_kana,   presence: true,
-  validates :family_name_kana,  presence: true,
+  validates :first_name,        presence: true, format: /\A[ぁ-んァ-ン一-龥]/
+  validates :family_name,       presence: true, format: /\A[ぁ-んァ-ン一-龥]/
+  validates :first_name_kana,   presence: true, format: /\A[ァ-ヶー－]+\z/
+  validates :family_name_kana,  presence: true, format: /\A[ァ-ヶー－]+\z/
   validates :birthday,          presence: true
 
 end
