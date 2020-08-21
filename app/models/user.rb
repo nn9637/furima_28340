@@ -7,14 +7,23 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
 
-  validates :nickname,          presence: true
-  validates :email,             presence: true, uniqueness: true, inclusion: { in: ["@"] }
-  validates :password,          presence: true, confirmation: true, format: { with: VALID_PASSWORD_REGEX }
-  validates :password_confirmation, presence: true
-  validates :first_name,        presence: true, format: { with: VALID_NAME_REGEX }
-  validates :family_name,       presence: true, format: { with: VALID_NAME_REGEX }
-  validates :first_name_kana,   presence: true, format: { with: VALID_PASSWORD_REGEX }
-  validates :family_name_kana,  presence: true, format: { with: VALID_PASSWORD_REGEX }
-  validates :birthday,          presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :email, uniqueness: true
 
+    with_options format: { with: VALID_NAME_REGEX }
+      validates :password, confirmation: true, format: { with: VALID_PASSWORD_REGEX }
+      validates :password_confirmation
+      validates :first_name
+      validates :family_name
+    end
+
+    with_options format: { with: VALID_PASSWORD_REGEX }
+      validates :first_name_kana
+      validates :family_name_kana
+    end
+
+    validates :birthday   
+
+  end
 end
