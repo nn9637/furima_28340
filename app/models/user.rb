@@ -12,7 +12,7 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
 
     with_options format: { with: VALID_NAME_REGEX }
-      validates :password, confirmation: true, format: { with: VALID_PASSWORD_REGEX }
+      validates :password, confirmation: true
       validates :password_confirmation
       validates :first_name
       validates :family_name
