@@ -11,14 +11,14 @@ class User < ApplicationRecord
     validates :nickname
     validates :email, uniqueness: true
 
-    with_options format: { with: VALID_NAME_REGEX }
+    with_options format: { with: VALID_NAME_REGEX } do
       validates :password, confirmation: true
       validates :password_confirmation
       validates :first_name
       validates :family_name
     end
 
-    with_options format: { with: VALID_PASSWORD_REGEX }
+    with_options format: { with: VALID_PASSWORD_REGEX } do
       validates :first_name_kana
       validates :family_name_kana
     end
