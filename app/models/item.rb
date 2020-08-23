@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     validates :postage_payer
     validates :preparation_day
     validates :category
-    validates :price
+    validates :price, numericality: { in: 300..9999999 }
   end 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
