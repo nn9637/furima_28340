@@ -1,6 +1,18 @@
 class Item < ApplicationRecord
   has_one :item_img
   belongs_to :user
+  has_one_attached :image
+
+  with_options presence: true do
+    validates :name
+    validates :introduction
+    validates :prefecture_code
+    validates :condition
+    validates :postage_payer
+    validates :preparation_day
+    validates :category
+    validates :price
+  end 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
