@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :items
 
-  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
+  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
 
   with_options presence: true do
     validates :nickname
@@ -25,7 +25,6 @@ class User < ApplicationRecord
       validates :family_name_kana
     end
 
-    validates :birthday   
-
+    validates :birthday
   end
 end

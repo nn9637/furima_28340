@@ -29,19 +29,19 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
-    
+
     it 'postage_payerが空では登録できないこと' do
       @item.postage_payer = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Postage Payer can't be blank")
     end
-    
+
     it 'preparation_dayが空では登録できないこと' do
       @item.preparation_day = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Preparation Day can't be blank")
     end
-    
+
     it 'categoryが空では登録できないこと' do
       @item.category = nil
       @item.valid?
@@ -53,6 +53,5 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
-
   end
 end
