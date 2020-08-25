@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  has_one :item_img
   belongs_to :user
   has_one_attached :image
 
@@ -10,7 +9,6 @@ class Item < ApplicationRecord
     validates :condition
     validates :postage_payer
     validates :preparation_day
-    validates :category
     validates :price, numericality: { in: 300..9_999_999 }
   end
 

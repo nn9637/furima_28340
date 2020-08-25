@@ -90,17 +90,5 @@ Things you may want to cover:
 
 ### Association
 - has_one :item_purchase
-- has_one :item_img
 - belongs_to :user
 - Gem :jp_prefecture
-
-
-## item_imgs テーブル
-
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| url      | string | null: false |
-| item     | references | null: false, foreign_key: true |
-
-### Association
-- belongs_to :item
