@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :preparation_day
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :introduction
     validates :category
