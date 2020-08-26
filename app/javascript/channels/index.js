@@ -3,10 +3,3 @@
 
 const channels = require.context('.', true, /_channel\.js$/)
 channels.keys().forEach(channels)
-
-window.addEventListener('load', function(){
-
-  const addTaxpPice = document.getElementById("add-tax-price")
-  const Profit = document.getElementById("profit")
-
-}
