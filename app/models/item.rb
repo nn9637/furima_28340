@@ -17,7 +17,7 @@ class Item < ApplicationRecord
     validates :postage_payer
     validates :prefecture_code
     validates :preparation_day
-    validates :price, numericality: { in: 300..9_999_999 }
+    validates :price, inclusion: { in: 300..9_999_999 }
   end
 
   # ジャンルの選択が「--」の時は保存できないようにする
