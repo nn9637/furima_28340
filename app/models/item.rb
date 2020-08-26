@@ -28,5 +28,4 @@ class Item < ApplicationRecord
     validates :prefecture_code_id
     validates :preparation_day_id
   end
-
 end
