@@ -31,17 +31,17 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to root_path
     else
-      render :show     
+      render :show
     end
   end
 
   def update
     item = Item.find(params[:id])
     if item.update(item_params)
-      redirect_to root_path  
+      redirect_to root_path
     else
-      render :edit     
-    end 
+      render :edit
+    end
   end
 
   private
