@@ -1,4 +1,5 @@
 class ItemPurchasesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @item_purchase = ItemPurchase.new(item_purchase_params)
