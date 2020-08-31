@@ -5,4 +5,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :destroy]
   resources :items
+  resources :item_purchases, only: [:index, :create]
 end
