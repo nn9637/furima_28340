@@ -2,37 +2,38 @@ class ItemPurchasesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @item_purchase = ItemPurchase.new(item_purchase_params)
+    @item_purchase = UserPurchase.new
     @item = Item.find(params[:item_id])
   end
 
   def create
-    @item_purchase = ItemPurchase.new(item_purchase_params)
+    @item_purchase = UserPurchase.new(item_purchase_params)
+    @item = Item.find(params[:item_id])
     if @item_purchase.valid?
       pay_item
       @item_purchase.save
       return redirect_to root_path
     else
-      render 'index'
+      render "index"
     end
   end
 
-  def done
-    @item_purchase = Item.find(params[:id])
-    @item_purchase.update(item_purchases_id: current_user.id)
-  end
+  # def done
+  #   @item_purchase = Item.find(params[:id])
+  #   @item_purchase.update(item_purchases_id: current_user.id)
+  # end
 
 
   private
 
   def item_purchase_params
-    params.permit(:user_id, :item_id, :token)
+    params.permit(:token, :postal_code, :prefecture_code, :city, :house_number, :building_name, :phone_number, :item_id).merge(user_id: current_user.id)
   end
  
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: item_purchase_params[:user_id, :item_id],
+      amount: @item.price,
       card: item_purchase_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )

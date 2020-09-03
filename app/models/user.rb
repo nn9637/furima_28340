@@ -6,9 +6,11 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :item_purchases
+  has_one :address
 
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i.freeze
   VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
   with_options presence: true do
     validates :nickname

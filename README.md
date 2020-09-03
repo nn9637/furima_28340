@@ -57,11 +57,11 @@ Things you may want to cover:
 - has_one :sending_destination
 
 
-## sending_destinations テーブル
+## address テーブル
 
 | Column          | Type       | Options      |
 | --------        | ------     | -----------  |
-| post_code       | string     | null: false  |
+| postal_code      | string     | null: false  |
 | prefecture_code | integer    | null: false  |
 | city            | string     | null: false  |
 | house_number    | string     | null: false  |
