@@ -9,7 +9,7 @@ class UserPurchase
     validates :prefecture_code
     validates :city
     validates :house_number
-    validates :phone_number
+    validates :phone_number, format: {with: /(0{1}\d{9,10})/}
   end
 
   validates :prefecture_code, numericality: { other_than: 1, message: "can't be blank" }
