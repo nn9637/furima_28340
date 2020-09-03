@@ -21,7 +21,7 @@ RSpec.describe UserPurchase, type: :model do
     it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @user_purchase.postal_code = '1234567'
       @user_purchase.valid?
-      expect(@user_purchase.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@user_purchase.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
     end
 
     it 'prefecture_codeが空だと保存できないこと' do
@@ -64,6 +64,5 @@ RSpec.describe UserPurchase, type: :model do
       @user_purchase.phone_number_confirmation = '0000000000'
       expect(@user_purchase).to be_valid
     end
-
   end
 end
