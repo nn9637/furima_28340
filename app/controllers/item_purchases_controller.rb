@@ -22,7 +22,6 @@ class ItemPurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-
   private
 
   def item_purchase_params
