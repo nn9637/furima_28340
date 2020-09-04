@@ -26,7 +26,7 @@ class User < ApplicationRecord
       validates :family_name
     end
 
-    with_options format: { with: VALID_NAME_REGEX } do
+    with_options format: { with: VALID_KANA_REGEX } do
       validates :first_name_kana
       validates :family_name_kana
     end
