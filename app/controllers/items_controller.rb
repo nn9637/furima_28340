@@ -19,7 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  
   def edit
     redirect_to root_path unless current_user.id == @item.user.id
   end
