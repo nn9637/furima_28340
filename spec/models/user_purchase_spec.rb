@@ -48,11 +48,6 @@ RSpec.describe UserPurchase, type: :model do
       expect(@user_purchase.errors.full_messages).to include("HouseNumber can't be blank")
     end
 
-    it 'building_nameは空でも保存できること' do
-      @user_purchase.building_name = nil
-      expect(@user_purchase).to be_valid
-    end
-
     it 'phone_numberが空だと保存できないこと' do
       @user_purchase.phone_number = nil
       @user_purchase.valid?
